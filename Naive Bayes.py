@@ -13,7 +13,7 @@ features = ['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked']
 X = df[features].copy()
 y = df['Survived']
 
-# Preprocessing (همون قبلی)
+
 imputer = SimpleImputer(strategy='median')
 X[['Age', 'Fare']] = imputer.fit_transform(X[['Age', 'Fare']])
 X['Embarked'] = X['Embarked'].fillna(X['Embarked'].mode()[0])
@@ -27,8 +27,8 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-# === اضافه شده: PCA برای کاهش بعد ===
-pca = PCA(n_components=0.95)  # یا n_components=2 برای 2 بعد و رسم scatter
+
+pca = PCA(n_components=0.95) 
 X_train_pca = pca.fit_transform(X_train_scaled)
 X_test_pca = pca.transform(X_test_scaled)
 
